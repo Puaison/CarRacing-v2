@@ -1,7 +1,7 @@
 # 🚗 Reinforcement Learning with DDQN and Prioritized Experience Replay on CarRacing-v2
 
 ## 📌 Overview
-This project is a **Reinforcement Learning (RL)** implementation applied to the `CarRacing-v2` environment from OpenAI Gym.  
+This project is a **Reinforcement Learning (RL)** implementation applied to the [`CarRacing-v2`](https://gymnasium.farama.org/environments/box2d/car_racing/) environment from OpenAI Gym.  
 Specifically, it uses a **Double Deep Q-Network (DDQN)** combined with a **Prioritized Experience Replay (PER) Buffer**.  
 The agent learns directly from **image observations**, leveraging the convolutional architecture introduced by DeepMind for Atari games, showing its adaptability to different environments.
 
