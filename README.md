@@ -49,14 +49,11 @@ Reward assignment logic for the RL agent:
 PER allows the RL agent to focus training on **rare and informative transitions** by sampling based on **TD-error**:
 
 - **Sampling probability:**  
-  \[
-  P(i) = \frac{p_i^\alpha}{\sum_n p_n^\alpha}
-  \]
+  ![Sampling probability](https://latex.codecogs.com/svg.latex?P(i)%20%3D%20%5Cfrac%7Bp_i%5E%5Calpha%7D%7B%5Csum_n%20p_n%5E%5Calpha%7D)
 
 - **Importance Sampling (IS) weights:**  
-  \[
-  w_i = \left(\frac{1}{N} \cdot \frac{1}{P(i)}\right)^\beta
-  \]
+  ![IS weights](https://latex.codecogs.com/svg.latex?w_i%20%3D%20%5Cleft%28%5Cfrac%7B1%7D%7BN%7D%20%5Ccdot%20%5Cfrac%7B1%7D%7BP%28i%29%7D%5Cright%29%5E%7B%5Cbeta%7D)
+
 
 - Implementations:
   - **Vanilla PER**: simple array-based.  
@@ -75,10 +72,11 @@ Both achieved **similar performance**, but SumTree scales better with larger buf
   - **ϵ-greedy exploration**: initial ϵ = 0.7 (decay 0.99 per episode).  
   - **Batch updates**: mini-batches of 64, PER-based sampling.  
 
+**TD-error used for priority / updates:**  
+![TD-error](https://latex.codecogs.com/svg.latex?%5Cdelta_j%20%3D%20R_j%20%2B%20%5Cgamma%20Q_%7B%5Ctext%7Btarget%7D%7D%28S_j%2C%20%5Coperatorname%7Bargmax%7D_a%20Q%28S_j%2C%20a%29%29%20-%20Q%28S_%7Bj-1%7D%2C%20A_%7Bj-1%7D%29)
+
 The **loss function** incorporates IS weights:  
-\[
-L = \text{mean}\left((\delta^2) \cdot w\right)
-\]
+![Loss](https://latex.codecogs.com/svg.latex?L%20%3D%20%5Cmathrm%7Bmean%7D%28%28%5Cdelta%5E2%29%20%5Ccdot%20w%29)
 
 ---
 
@@ -92,8 +90,9 @@ L = \text{mean}\left((\delta^2) \cdot w\right)
 | 50,000      | 520                  | 300–400            |
 | 100,000     | 592                  | 400–500            |
 
-- **Fast model** → more aggressive, faster laps, but riskier.  
-- **Precise model** → slower, safer, fewer mistakes.  
+Moreover, accordingly to the number of update steps of the algorithm, I noticed different features:
+- With reasoneably numbers of iterations, a **Faster model** model is obtained → more aggressive, faster laps, but riskier.  
+- By doing more iteraions a **More Precise model** is obtained→ safer, fewer mistakes but slower in completing the lap. 
 
 ---
 
@@ -101,12 +100,6 @@ L = \text{mean}\left((\delta^2) \cdot w\right)
 - Investigate smarter strategies for **sample replacement** in the PER buffer.  
 - Explore hybrid approaches to balance **speed and precision** in agent behavior.  
 - Extend to **continuous action spaces** and compare with policy-gradient RL methods.  
-
----
-
-## 👥 Collaborators
-- **Luca Del Signore**  
-- **Massimo Romano**  
 
 ---
 
