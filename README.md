@@ -1,5 +1,9 @@
 # 🚗 Reinforcement Learning with DDQN and Prioritized Experience Replay on CarRacing-v2
 
+<p align="center">
+<img src="demo.gif" width="500"/>
+</p>
+
 ## 📌 Overview
 This project is a **Reinforcement Learning (RL)** implementation applied to the [`CarRacing-v2`](https://gymnasium.farama.org/environments/box2d/car_racing/) environment from OpenAI Gym.  
 Specifically, it uses a **Double Deep Q-Network (DDQN)** combined with a **Prioritized Experience Replay (PER) Buffer**.  
@@ -92,7 +96,7 @@ The **loss function** incorporates IS weights:
 
 Moreover, accordingly to the number of update steps of the algorithm, I noticed different features:
 - With reasoneably numbers of iterations, a **Faster model** model is obtained → more aggressive, faster laps, but riskier.  
-- By doing more iteraions a **More Precise model** is obtained→ safer, fewer mistakes but slower in completing the lap. 
+- By doing more iterations, a **More Precise model** is obtained → safer, fewer mistakes but slower in completing the lap. 
 
 ---
 
